@@ -1,10 +1,5 @@
 import { useState } from "react";
-import {
-createUserWithEmailAndPassword,
-signInWithEmailAndPassword,
-} from 'firebase/auth';
-import { auth } from "../../firebase/config";
-
+import {registerUser} from '../services/auth'
 
 export const Sing = () => {
   const [values, setValues] = useState({
@@ -12,48 +7,23 @@ export const Sing = () => {
     password: "",
   });
 
+  //const {loginWithGoogle} = useAuth()
+
   const handleChange = (e) => {
     setValues({
       ...values,
       [e.target.name]: e.target.value,
     });
+    //singUp(values.email, values.password)
   };
+
+  
 
     const onSubmit = async (e) => {
       e.preventDefault();
-    createUserWithEmailAndPassword(auth, values.email, values.password)
-      .then((userCredential) => {
-      //Signed in
-        const user = userCredential.user;
-      //...
-
-        console.log(user);
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-      //..
-        console.log(errorCode, errorMessage);
-      });
-    try {
-      const userCredential = await createUserWithEmailAndPassword(
-        auth,
-        values.email,
-        values.password
-      );
-
-      const { user } = userCredential;
+      const user = await registerUser(values);
       console.log(user);
-    } catch (error) {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-    //..
-      console.log(errorCode, errorMessage);
-      }
-
-    const user = await register(values);
-    console.log(user);
-  };
+    };
 
   return (
     <form onSubmit={onSubmit}>
@@ -63,6 +33,7 @@ export const Sing = () => {
           value={values.email}
           onChange={handleChange}
           name="email"
+          placeholder="Coloca tu email aqui"
         />
       </div>
       <div>
@@ -71,9 +42,11 @@ export const Sing = () => {
           name="password"
           value={values.password}
           onChange={handleChange}
+          placeholder="Coloca tu contrasenia aqui"
         />
       </div>
       <button type="submit">Crear Cuenta</button>
+      <button>Login wih Google</button>
     </form>
   );
 };
