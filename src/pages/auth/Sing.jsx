@@ -7,17 +7,12 @@ export const Sing = () => {
     password: "",
   });
 
-  //const {loginWithGoogle} = useAuth()
-
   const handleChange = (e) => {
     setValues({
       ...values,
       [e.target.name]: e.target.value,
     });
-    //singUp(values.email, values.password)
   };
-
-  
 
     const onSubmit = async (e) => {
       e.preventDefault();
