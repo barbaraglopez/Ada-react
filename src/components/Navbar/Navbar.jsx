@@ -16,7 +16,6 @@ const Navbar = () => {
         </Link>
         <Link className="seeCarrito" to={"/cart"}>
           🛒
-          {/* {cart.length > 0 ? <TotalItems /> : null} */}
         </Link>
       </nav>
     </div>
