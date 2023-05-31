@@ -2,7 +2,6 @@ import { query, where, collection, getDocs } from "firebase/firestore";
 import { db } from '../../firebase/config'
 
 
-
 export const getAllProducts = async () => {
     const data = await getDocs(collection(db, "Productos"));
 
@@ -14,19 +13,9 @@ export const getAllProducts = async () => {
             id: doc.id
         })
     });
-
-    //console.log(products)
     return products
 }
 
-/* export const createProduct = async ({name, descripcion,precio , uid}) => {
-    const docRef = await addDoc(collection(db, "Products"), {
-        name: name,
-        descripcion:descripcion,
-        precio: precio,
-        id:uid
-    });
-} */
 
 export const getUserProducts = async (uid) =>{
     const q = query(collection(db, "Products"), where("uid", "==", uid));

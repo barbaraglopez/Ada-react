@@ -1,3 +1,3 @@
 export const Message =()=>{
-    return<div></div>
+    return<h1>Error 404</h1>
 }

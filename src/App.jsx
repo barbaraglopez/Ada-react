@@ -1,12 +1,10 @@
-import { useState } from 'react'
 import './App.css'
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, BrowserRouter } from 'react-router-dom'
 import {Home} from './pages/Home'
-/* import {Login} from './pages/auth/Login' */
 import {Sing} from './pages/auth/Sing';
-import {User} from './pages/User';
-import {UserProvider} from './context/useContext'
-//import {CreateProducts} from "./pages/auth/CreateProducts";
+import {CartContent} from "./components/CartContent/CartContent";
+import {AppProvider} from './context/useContext'
+
 
 
 function App() {
@@ -14,14 +12,13 @@ function App() {
   return (
     <main>
       <h1>Firebase</h1>
-      <UserProvider>
-        <Routes>
-          <Route path="/" element={<Home />}></Route>
-          {/* <Route path="/login" element={<Login />}></Route> */}
-          <Route path="/sing" element={<Sing />}></Route>
-          <Route path="/user" element={<User />}></Route>
-        </Routes>
-      </UserProvider>
+      <AppProvider>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/sing" element={<Sing />} />
+            <Route path="/cart" element={<CartContent />}/>
+          </Routes>
+      </AppProvider>
     </main>
   );
 }
