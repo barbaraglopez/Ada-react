@@ -9,7 +9,7 @@ export const CartElements = () => {
 
     //funcion eliminar compra
     const deleteProduct = (product)=>{
-        setCart([]);
+        setCart([])
     }
 
     return (
@@ -20,6 +20,7 @@ export const CartElements = () => {
             <h3 className="name">{product.name}</h3>
             <p className="descripcion">{product.descripcion}</p>
             <p className="precio">{product.precio}</p>
+            <p>{product.cantidad}</p>
             <button onClick={() => deleteProduct(product)}>
               Eliminar compra
             </button>

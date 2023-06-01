@@ -11,7 +11,6 @@ function App() {
 
   return (
     <main>
-      <h1>Firebase</h1>
       <AppProvider>
           <Routes>
             <Route path="/" element={<Home />} />

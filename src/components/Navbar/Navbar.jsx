@@ -12,8 +12,14 @@ const Navbar = () => {
     <div className="nav-container">
       <nav className="navbar">
         <Link to={"/"}>
-          <h1 className="navbar-logo">Shop.</h1>
+          <h1 className="navbar-logo">Ada Shop</h1>
         </Link>
+        {/* <Link to={"/"}>
+          <p className="navbar-logo">Inicio</p>
+        </Link>
+        <Link to={"/Productos mas vendidos"}>
+          <p className="navbar-logo">Productos mas vendidos</p>
+        </Link> */}
         <Link className="seeCarrito" to={"/cart"}>
           🛒
         </Link>
