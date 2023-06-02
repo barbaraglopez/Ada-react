@@ -19,6 +19,7 @@ export const Sing = () => {
       const user = await registerUser(values);
       console.log(user);
     };
+    
 
   return (
     <form onSubmit={onSubmit}>

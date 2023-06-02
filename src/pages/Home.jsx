@@ -7,7 +7,7 @@ import Navbar from '../components/Navbar/Navbar';
 
 
 export const Home = () => {
-  const { data, cart, setCart } = useContext(AppContext);
+  const { data, cart, setCart , total, setTotal} = useContext(AppContext);
 
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -31,24 +31,17 @@ export const Home = () => {
     getData();
   }, []);
 
-console.log(cart);
-/* const buyProduct =(product)=>{
-    if(cart.includes(product)){
-      product.cantidad += 1;
-    }else{
-      setCart([...cart, product]);
-    }
-} */
 
-const buyProduct = (product) => {
-  let stagingProduct = { ...product };
-  stagingProduct.cantidad = 1;
-  if (cart.includes(product)) {
-    product.cantidad += 1;
-  } else {
-    setCart([...cart, stagingProduct]);
-  }
-};
+const buyProduct =(product)=>{
+    let stagingProduct = { ...product}
+    stagingProduct.cantidad = 1
+    let match = cart.find((cartProduct) => cartProduct.name === product.name)
+    if(match) {
+      match.cantidad += 1
+    }else{
+      setCart([...cart, stagingProduct])
+    }
+} 
 
   return (
     <div>

@@ -4,6 +4,7 @@ import {Home} from './pages/Home'
 import {Sing} from './pages/auth/Sing';
 import {CartContent} from "./components/CartContent/CartContent";
 import {AppProvider} from './context/useContext'
+import {Checkout} from './pages/auth/Checkout'
 
 
 
@@ -16,7 +17,8 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/sing" element={<Sing />} />
             <Route path="/cart" element={<CartContent />}/>
-          </Routes>
+            <Route path="/checkout" element ={<Checkout/>}/>
+            </Routes>
       </AppProvider>
     </main>
   );

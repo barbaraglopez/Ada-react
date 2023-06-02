@@ -46,8 +46,9 @@ export const AppProvider = ({ children }) => {
 
 //Funcion para mi carrito de compras
 const [cart ,setCart] = useState([])
+const [total, setTotal] = useState();
 
     return (
-        <AppContext.Provider value={{ user , data, cart, setCart }}>{children}</AppContext.Provider>
+        <AppContext.Provider value={{ user , data, cart, setCart, total, setTotal }}>{children}</AppContext.Provider>
     );
 };
