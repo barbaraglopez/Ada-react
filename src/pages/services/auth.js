@@ -7,6 +7,7 @@ export const loguinWithEmail = ({ email, password }) => {
             // Signed in
             const user = userCredential.user;
             // ...
+            return user
         })
         .catch((error) => {
             const errorCode = error.code;
@@ -23,6 +24,7 @@ export const registerUser = async ({ email, password }) => {
         );
 
         const { user } = userCredential;
+
 
         return user;
     } catch (error) {

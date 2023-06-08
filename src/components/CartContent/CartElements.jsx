@@ -27,7 +27,7 @@ export const CartElements = () => {
           </div>
         ))}
         {!cart.length && <p>No hay pedido</p>}
-        <Link to={"/"}>Vuelva al inicio y compre!</Link>
+        <Link to={"/Home"}>Vuelva al inicio y compre!</Link>
         <div>
           <button onClick={() => deleteProduct(product)}>Vaciar carrito</button>
           <Link to={"/checkout"}>Finalizar compra</Link>

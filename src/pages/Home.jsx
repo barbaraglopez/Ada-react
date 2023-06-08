@@ -35,7 +35,7 @@ export const Home = () => {
 const buyProduct =(product)=>{
     let stagingProduct = { ...product}
     stagingProduct.cantidad = 1
-    let match = cart.find((cartProduct) => cartProduct.name === product.name)
+    let match = cart.find((cartProduct) => cartProduct.id === product.id)
     if(match) {
       match.cantidad += 1
     }else{

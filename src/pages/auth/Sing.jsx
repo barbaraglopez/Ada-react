@@ -1,7 +1,10 @@
 import { useState } from "react";
-import {registerUser} from '../services/auth'
+import { Link, redirect} from "react-router-dom";
+import { registerUser, loguinWithEmail } from "../services/auth";
 
 export const Sing = () => {
+  const [redirect, setRedirect] = useState(0)
+
   const [values, setValues] = useState({
     email: "",
     password: "",
@@ -14,15 +17,20 @@ export const Sing = () => {
     });
   };
 
-    const onSubmit = async (e) => {
-      e.preventDefault();
-      const user = await registerUser(values);
-      console.log(user);
+  const goHome = async (e) => {
+    e.preventDefault();
+    const user = await registerUser(values);
+    if (user) {
+      setRedirect(1)
+    }else{
+      setRedirect(2)
     };
-    
+};
 
-  return (
-    <form onSubmit={onSubmit}>
+
+return (
+  <>
+    <form onSubmit={goHome}>
       <div>
         <input
           type="email"
@@ -41,8 +49,16 @@ export const Sing = () => {
           placeholder="Coloca tu contrasenia aqui"
         />
       </div>
-      <button type="submit">Crear Cuenta</button>
-      <button>Login wih Google</button>
+      <button type="submit">Create account</button>
+      <Link to={"/SingIn"}>Login</Link>
     </form>
-  );
+    {redirect == 1 ? (
+      <Link to={"/Home"}>
+        Datos correctos, haga click aqui y navegue en nuestra home
+      </Link>
+    ) : redirect == 2 ?(
+      <p>datos incorrectos</p>
+    ) : (<p>ingresa tus datos</p>)}
+  </>
+);
 };
