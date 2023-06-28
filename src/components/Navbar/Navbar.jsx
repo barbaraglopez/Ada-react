@@ -1,13 +1,18 @@
 import { useContext } from "react";
-//import { dataContext } from "../Context/DataContext";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
+import {useAuth} from '../../context/useContext'
 
 //import TotalItems from "../CartContent/TotalItems";
 
 import "./Navbar.css";
 
 const Navbar = () => {
-  //const { cart } = useContext(dataContext);
+  const {logOut , loaging} = useAuth()
+
+  const handleLogOut= async ()=>{
+    await logOut()
+  }
+
   return (
     <div className="nav-container">
       <nav className="navbar">
@@ -23,6 +28,7 @@ const Navbar = () => {
         <Link className="seeCarrito" to={"/cart"}>
           🛒
         </Link>
+        <button onClick={handleLogOut}>Cerrar sesion</button> 
       </nav>
     </div>
   );

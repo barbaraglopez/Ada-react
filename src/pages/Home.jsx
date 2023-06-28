@@ -1,18 +1,20 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import { useContext } from "react";
-import { AppContext } from '../context/useContext'
+import { AppContext, useAuth } from '../context/useContext'
 import { getAllProducts } from './services/products'
 import Navbar from '../components/Navbar/Navbar';
 
 
+
 export const Home = () => {
-  const { data, cart, setCart , total, setTotal} = useContext(AppContext);
+  const {user} = useAuth()
+  const { cart, setCart } = useContext(AppContext);
 
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, seetError] = useState(false);
-  //const { user } = useContext(UserContext);
+ 
 
   useEffect(() => {
     const getData = async () => {
@@ -31,7 +33,6 @@ export const Home = () => {
     getData();
   }, []);
 
-
 const buyProduct =(product)=>{
     let stagingProduct = { ...product}
     stagingProduct.cantidad = 1
@@ -43,9 +44,13 @@ const buyProduct =(product)=>{
     }
 } 
 
+//spinner pendiente
+if(loading) return <h1>loading</h1>
+
   return (
     <div>
       <Navbar />
+      <h1>Welcome {user.email}!</h1>
       <h2>Home</h2>
       {error && <p>Error 404 not found</p>}
       {loading && <p>Loading</p>}

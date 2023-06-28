@@ -6,6 +6,7 @@ import {CartContent} from "./components/CartContent/CartContent";
 import {AppProvider} from './context/useContext'
 import {Checkout} from './pages/auth/Checkout'
 import {Loguin} from './pages/auth/Loguin'
+import { ProtectedRoute } from './components/protectedRoutes';
 
 
 
@@ -16,8 +17,15 @@ function App() {
     <main>
       <AppProvider>
         <Routes>
-          <Route path="/Home" element={<Home />} action={Sing} />
-          <Route path="/SingIn" element={<Loguin />} action={Sing} />
+          <Route
+            path="/Home"
+            element={
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>}
+            action={Sing}
+          />
+          <Route path="/Loguin" element={<Loguin />} action={Sing} />
           <Route path="/" element={<Sing />} />
           <Route path="/cart" element={<CartContent />} />
           <Route path="/checkout" element={<Checkout />} />

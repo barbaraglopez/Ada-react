@@ -1,8 +1,12 @@
 import { useState } from "react";
-import {loguinWithEmail} from '../../pages/services/auth'
+import { useAuth } from "../../context/useContext";
+import { useNavigate } from "react-router-dom";
+
 
 export const Loguin = () => {
-  const [redirect, setRedirect] = useState(0);
+   const [error, setError] = useState(false);
+   const navigate = useNavigate();
+  const { loguinUser } = useAuth();
 
   const [values, setValues] = useState({
     email: "",
@@ -16,21 +20,22 @@ export const Loguin = () => {
     });
   };
 
-  const goHome = async (e) => {
+  const loguin = async (e) => {
     e.preventDefault();
-      const user = await loguinWithEmail(values);
-      console.log(user);  
-      if (user) {
-        setRedirect(1);
-      } else {
-        setRedirect(2);
-      }
-};
-  
+    setError("");
+    try {
+      await loguinUser(values.email, values.password);
+      navigate("/Home");
+    } catch (error) {
+      setError(error);
+    }
+  };
+
 
   return (
     <>
-      <form onSubmit={goHome}>
+      <div>{error && <p> Ingrese datos validos</p>}</div>
+      <form onSubmit={loguin}>
         <div>
           <input
             type="email"
@@ -49,17 +54,8 @@ export const Loguin = () => {
             onChange={handleChange}
           />
         </div>
-        <button type="submit">Ingresa</button>
+        <button>Loguin</button>
       </form>
-      {redirect == 1 ? (
-        <Link to={"/Home"}>
-          Datos correctos, haga click aqui y navegue en nuestra home
-        </Link>
-      ) : redirect == 2 ? (
-        <p>datos incorrectos</p>
-      ) : (
-        <p>ingresa tus datos</p>
-      )}
     </>
   );
 };

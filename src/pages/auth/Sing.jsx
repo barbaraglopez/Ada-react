@@ -1,14 +1,18 @@
 import { useState } from "react";
-import { Link, redirect} from "react-router-dom";
-import { registerUser, loguinWithEmail } from "../services/auth";
+import { useNavigate} from "react-router-dom";
+import {useAuth} from "../../context/useContext"
 
 export const Sing = () => {
-  const [redirect, setRedirect] = useState(0)
+  const [error, setError] = useState(false)
+  const navigate = useNavigate()
+  const { registerUser, loguinWithGoogle } = useAuth();
+
 
   const [values, setValues] = useState({
     email: "",
     password: "",
   });
+
 
   const handleChange = (e) => {
     setValues({
@@ -17,19 +21,33 @@ export const Sing = () => {
     });
   };
 
+
   const goHome = async (e) => {
     e.preventDefault();
-    const user = await registerUser(values);
-    if (user) {
-      setRedirect(1)
-    }else{
-      setRedirect(2)
-    };
-};
+    setError('')
+    try {
+      await registerUser(values.email, values.password);
+      navigate("/Home")
+    } catch (error) {
+      setError(true);
+    }
+  }
+
+  const LoguinwhitAccount =()=>{
+    navigate('/Loguin')
+  }
+
+  //funcion para acceder con cuenta de google
+  const handleGoogleSingIn = async ()=>{
+    await loguinWithGoogle()
+    navigate('/Home')
+  }
+
 
 
 return (
   <>
+    <div>{error && <p> Ingrese datos validos</p>}</div>
     <form onSubmit={goHome}>
       <div>
         <input
@@ -50,15 +68,9 @@ return (
         />
       </div>
       <button type="submit">Create account</button>
-      <Link to={"/SingIn"}>Login</Link>
     </form>
-    {redirect == 1 ? (
-      <Link to={"/Home"}>
-        Datos correctos, haga click aqui y navegue en nuestra home
-      </Link>
-    ) : redirect == 2 ?(
-      <p>datos incorrectos</p>
-    ) : (<p>ingresa tus datos</p>)}
+    <button onClick={LoguinwhitAccount}>Do u already have a account? Click here and login</button>
+    <button onClick={handleGoogleSingIn}>Loguin with google</button>
   </>
 );
 };

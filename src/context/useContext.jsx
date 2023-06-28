@@ -1,30 +1,73 @@
-import { onAuthStateChanged } from "firebase/auth";
+import {
+    createUserWithEmailAndPassword,
+    onAuthStateChanged,
+    signInWithEmailAndPassword,
+    signOut,
+    GoogleAuthProvider,
+    signInWithPopup
+} from "firebase/auth";
 import { useEffect } from "react";
 import { useState } from "react";
-import { createContext } from "react";
+import { createContext, useContext } from "react";
 import { auth } from "../firebase/config";
-//import axios from 'axios';
 import { getAllProducts } from "../pages/services/products";
 
 export const AppContext = createContext();
 
-//Funcion para saber si el usuario esta logueado o no
+//funcion corta para exportar el context
+export const useAuth = () => {
+    const context = useContext(AppContext);
+    return context;
+};
+
+//Funcion para mantener la funcion abierta
 export const AppProvider = ({ children }) => {
     const [user, setUser] = useState(null);
 
     useEffect(() => {
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                const uid = user.uid;
-                setUser(uid);
-            } else {
-                setUser(null)
-            }
+        const unsuscribe = onAuthStateChanged(auth, currentUser => {
+            setUser(currentUser)
+            setLoading(false)
         });
+
+        return () => unsuscribe()
     }, []);
 
-    //Funcion para mostrar mis productos
-    const [data, setData] = useState([])
+//funcion para registarme por primera vez
+    const registerUser = (email, password) => {
+        return new Promise((resolve, reject) => {
+            const user = createUserWithEmailAndPassword(auth, email, password);
+            if (error) {
+                reject(new Error("se produjo un error"));
+            } else {
+                resolve(user);
+            }
+        });
+    };
+
+// funcion para loguearme con usuario registrado
+    const loguinUser = (email, password) => {
+        return new Promise((resolve, reject) => {
+            const user = signInWithEmailAndPassword(auth, email, password);
+            if (error) {
+                reject(new Error("se produjo un error"));
+            } else {
+                resolve(user);
+            }
+        });
+    };
+
+//funcion para cerrar sesion 
+    const logOut = () => signOut(auth)
+
+//funcion para loguearme con cuenta de google
+const loguinWithGoogle =()=>{
+    const googleProvider = new GoogleAuthProvider
+    return signInWithPopup(auth,googleProvider)
+}
+
+//Funcion para mostrar mis productos
+    const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, seetError] = useState(false);
 
@@ -37,18 +80,33 @@ export const AppProvider = ({ children }) => {
             } catch (error) {
                 setLoading(false);
                 seetError(true);
-            }  finally {
-                setLoading(false)
+            } finally {
+                setLoading(false);
             }
         };
         getData();
     }, []);
 
-//Funcion para mi carrito de compras
-const [cart ,setCart] = useState([])
-const [total, setTotal] = useState();
+    //Funcion para mi carrito de compras
+    const [cart, setCart] = useState([]);
+    const [total, setTotal] = useState();
 
     return (
-        <AppContext.Provider value={{ user , data, cart, setCart, total, setTotal }}>{children}</AppContext.Provider>
+        <AppContext.Provider
+            value={{
+                logOut,
+                loguinUser,
+                registerUser,
+                user,
+                data,
+                cart,
+                setCart,
+                total,
+                setTotal,
+                loguinWithGoogle,
+            }}
+        >
+            {children}
+        </AppContext.Provider>
     );
 };
