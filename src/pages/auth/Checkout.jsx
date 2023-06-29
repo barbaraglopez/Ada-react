@@ -2,11 +2,13 @@ import { createOrder } from '../../pages/services/order'
 import { useState } from 'react';
 import { useContext } from "react";
 import { AppContext } from "../../context/useContext"
-import { Link } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 
 export const Checkout = () => {
 
   const [err, setErr] = useState(false)
+  const navigate = useNavigate();
+  const [message, setMessage] = useState('');
 
     const { cart, setCart } = useContext(AppContext);
     console.log(cart)
@@ -30,6 +32,7 @@ export const Checkout = () => {
     
     const onSubmit = async (e) => {
         e.preventDefault();
+        setErr('')
         const newOrder =  {
         Cliente : values,
         Productos:cart,
@@ -38,10 +41,10 @@ export const Checkout = () => {
   
         try {
             const order = await createOrder(newOrder);
-            console.log(order);
+            setMessage('Orden enviada con exito!')
         } catch (error) {
             setErr(true)
-            console.log(' hubo un error',error)
+            console.log('hubo un error',error)
         }
     };
 
@@ -79,8 +82,8 @@ export const Checkout = () => {
         <button onClick={backHome()} type="submit">
           Finalizar pedido
         </button>
+        {message.length != '' ? <p>{message}</p> : <p></p>}
         <Link to={"/Home"}>Vuelva al inicio y compre!</Link>
-        {err ? <p>No se pudo realizar la orden</p> : <p>Orden enviada!</p>}
       </form>
     );
 }

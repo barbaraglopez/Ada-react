@@ -1,5 +1,5 @@
-import { useContext } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { useState} from "react";
+import { Link} from "react-router-dom";
 import {useAuth} from '../../context/useContext'
 
 //import TotalItems from "../CartContent/TotalItems";
@@ -7,10 +7,15 @@ import {useAuth} from '../../context/useContext'
 import "./Navbar.css";
 
 const Navbar = () => {
-  const {logOut , loaging} = useAuth()
+  const [error, setError] = useState(false);
+  const {logOut ,} = useAuth()
 
   const handleLogOut= async ()=>{
-    await logOut()
+    try {
+      await logOut();  
+    } catch (error) {
+      setError(error.message)
+    }
   }
 
   return (

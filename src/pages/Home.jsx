@@ -48,7 +48,7 @@ const buyProduct =(product)=>{
 if(loading) return <h1>loading</h1>
 
   return (
-    <div>
+    <div className="w-full max-w-screem-xl max-h-screem-xl m-auto text-black bg-violet-200">
       <Navbar />
       <h1>Welcome {user.email}!</h1>
       <h2>Home</h2>

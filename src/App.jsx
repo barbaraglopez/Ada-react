@@ -20,9 +20,10 @@ function App() {
           <Route
             path="/Home"
             element={
-            <ProtectedRoute>
-              <Home />
-            </ProtectedRoute>}
+              <ProtectedRoute>
+                <Home />
+              </ProtectedRoute>
+            }
             action={Sing}
           />
           <Route path="/Loguin" element={<Loguin />} action={Sing} />
