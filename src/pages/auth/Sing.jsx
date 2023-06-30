@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate} from "react-router-dom";
 import { Alert } from "../../components/Alert";
 import {useAuth} from "../../context/useContext"
+import { FaGoogle } from "react-icons/fa6";
 
 export const Sing = () => {
   const [error, setError] = useState(false)
@@ -102,12 +103,13 @@ return (
       >
         Do you already have a account? Click here and login
       </button>
-      <button
+      <div
         onClick={handleGoogleSingIn}
-        className="bg-violet-200 hover:bg-violet-400 text-black shadow-mf rounded border-2 border-gray-300 py-2 px-4 w-full m-1"
+        className="bg-violet-200 hover:bg-violet-400 text-black shadow-mf rounded border-2 border-gray-300 py-2 px-4 w-full m-1 flex text-center justify-center"
       >
         Loguin with google
-      </button>
+        <FaGoogle className="text-center m-1 text-sky-800" />
+      </div>
     </div>
   </div>
 );

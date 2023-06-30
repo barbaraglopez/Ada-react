@@ -1,4 +1,3 @@
-import './App.css'
 import { Route, Routes, BrowserRouter } from 'react-router-dom'
 import {Home} from './pages/Home'
 import {Sing} from './pages/auth/Sing';
@@ -7,6 +6,7 @@ import {AppProvider} from './context/useContext'
 import {Checkout} from './pages/auth/Checkout'
 import {Loguin} from './pages/auth/Loguin'
 import { ProtectedRoute } from './components/protectedRoutes';
+import Profile from "./components/Profile/Profile";
 
 
 
@@ -14,7 +14,7 @@ import { ProtectedRoute } from './components/protectedRoutes';
 function App() {
 
   return (
-    <main>
+    <main className="text-center">
       <AppProvider>
         <Routes>
           <Route
@@ -27,6 +27,7 @@ function App() {
             action={Sing}
           />
           <Route path="/Loguin" element={<Loguin />} action={Sing} />
+          <Route path="/profile" element={<Profile />} action={Sing} />
           <Route path="/" element={<Sing />} />
           <Route path="/cart" element={<CartContent />} />
           <Route path="/checkout" element={<Checkout />} />
