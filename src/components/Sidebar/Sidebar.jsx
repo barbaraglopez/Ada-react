@@ -30,7 +30,7 @@ function Sidebar() {
         title: "Products",
         submenu: true,
         submenuItems: [
-          { title: "All our products", url: "/profile" },
+          { title: "All our products", url: "/home" },
           { title: "Everywone favorites", url: "/profile" },
         ],
       },
@@ -65,7 +65,7 @@ const darkmode=()=>{
 
     return (
       <div
-        className={`bg-neutral-950 text-white "flex h-screen p-5 pt-8 ${
+        className={`bg-neutral-950 text-white "flex h-screen p-5 pt-8 h-screen ${
           open ? "w-72" : "w-20"
         } relative duration-300`}
       >

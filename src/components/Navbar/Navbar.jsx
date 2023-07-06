@@ -10,18 +10,9 @@ const Navbar = () => {
 
   return (
     <div>
-      <nav className="navbar text-center bg-black flex justify-around h-20">
+      <nav className="navbar text-center bg-black flex justify-around h-20 w-screen h-16">
         <Link to={"/"}>
           <h1 className="navbar-logo text-center text-white">Ada Shop</h1>
-        </Link>
-        {/* <Link to={"/"}>
-          <p className="navbar-logo">Inicio</p>
-        </Link>
-        <Link to={"/Productos mas vendidos"}>
-          <p className="navbar-logo">Productos mas vendidos</p>
-        </Link> */}
-        <Link className="seeCarrito text-xl" to={"/cart"}>
-          🛒
         </Link>
       </nav>
     </div>

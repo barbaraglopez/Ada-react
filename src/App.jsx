@@ -18,16 +18,21 @@ function App() {
       <AppProvider>
         <Routes>
           <Route
-            path="/Home"
+            path="/home"
+            element={
+                <Home />}
+            action={Sing}
+          />
+          <Route path="/loguin" element={<Loguin />} action={Sing} />
+          <Route
+            path="/profile"
             element={
               <ProtectedRoute>
-                <Home />
+                <Profile />
               </ProtectedRoute>
             }
             action={Sing}
           />
-          <Route path="/Loguin" element={<Loguin />} action={Sing} />
-          <Route path="/profile" element={<Profile />} action={Sing} />
           <Route path="/" element={<Sing />} />
           <Route path="/cart" element={<CartContent />} />
           <Route path="/checkout" element={<Checkout />} />

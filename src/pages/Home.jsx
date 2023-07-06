@@ -1,6 +1,4 @@
-import { useState } from "react";
-import { useEffect } from "react";
-import { useContext } from "react";
+import { useState ,useEffect, useContext } from "react";
 import { AppContext, useAuth } from '../context/useContext'
 import { getAllProducts } from './services/products'
 import Navbar from '../components/Navbar/Navbar';

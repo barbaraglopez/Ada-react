@@ -1,17 +1,15 @@
 import React from 'react'
-import {useContext} from 'react';
-import {AppContext} from '../../context/useContext';
 import {CartElements} from './CartElements'
-import { CartTotal } from './CartTotal';
+import Footer from '../Footer/Footer'
+import Navbar from '../Navbar/Navbar'
 
 export const CartContent = () => {
-  const {data} = useContext(AppContext)
-
   return (
-    <>
+    <div className="">
+      <Navbar />
       <CartElements/>
-      <CartTotal/>
-    </>
-  )
+      <Footer />
+    </div>
+  );
 }
 
