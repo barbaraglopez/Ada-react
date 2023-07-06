@@ -1,9 +1,10 @@
 import { useContext } from "react";
 import { AppContext } from "../../context/useContext";
-import { Link } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 
 
 export const CartElements = () => {
+    const navigate = useNavigate();
     const { cart , setCart , total } = useContext(AppContext)
 
     //funcion eliminar compra
@@ -11,37 +12,57 @@ export const CartElements = () => {
       setCart([]);
     }
 
+    const navigateTo =(param)=>{
+      navigate(param)
+    }
+
     return (
-      <div className="absolute inset-0 top-20 flex flex-col text-center p-10 bg-slate-300  text-black items-center shadow-lg">
+      <div className="absolute inset-0 top-20 flex flex-col text-center bg-slate-50 text-black items-center shadow-lg rounded pt-6 mb-4">
         <h2 className="p-2 text-xl">Sus pedidos :</h2>
-        <div className="bg-slate-100 text-black p-7 rounded text-center text-sm w-min">
+        <div className="bg-white shadow-xl rounded pt-6 mb-3 mt-4 p-5 w-80">
           {cart.map((product) => (
-            <div key={product.id} className="">
-              <h3 className="name p-1">{product.name}</h3>
-              <p className="descripcion p-1">{product.descripcion}</p>
-              <p className="precio">Precio : $ {product.precio}</p>
-              <p className="p-1">Cantidad : {product.cantidad}</p>
-              <p className="p-3 ">
+            <div
+              key={product.id}
+              className="block text-gray-700 text-sm font-fold mb-2"
+            >
+              <h3 className="block text-gray-700 text-sm font-fold mb-2 name">
+                {product.name}
+              </h3>
+              <p className="block text-gray-700 text-sm font-fold mb-2">
+                {product.descripcion}
+              </p>
+              <p className="precio block text-gray-700 text-sm font-fold mb-2">
+                Precio : $ {product.precio}
+              </p>
+              <p className="block text-gray-700 text-sm font-fold mb-2">
+                Cantidad : {product.cantidad}
+              </p>
+              <p className="block text-gray-700 text-sm font-fold mb-2">
                 Total a pagar ${product.precio * product.cantidad}
               </p>
             </div>
           ))}
           {!cart.length && <p>No hay pedido</p>}
-          <Link to={"/Home"} className="">Vuelva al inicio</Link>
+          <button
+            onClick={() => navigateTo("/home")}
+            className="rounded p-2 text-sm text-white bg-violet-500 hover:bg-violet-700 font-bold"
+          >
+            Vuelva al inicio
+          </button>
         </div>
         <div className="flex flex-col items-center p-6">
           <button
-            className="bg-gray-100 p-1 m-1 border-red-400 border rounded px-2 cursor-pointer text-red-700 w-32 hover:bg-red-300 hover:text-white"
+            className="bg-red-300 border border-red-400 text-red-700 hover:bg-red-700 hover:text-white font-bold py-2 rounded focus:outline-none focus:shadow-outline cursor:auto; text-sm mt-2 mx-2 px-7"
             onClick={() => deleteProduct(product)}
           >
             Vaciar carrito
           </button>
-          <Link
-            to={"/checkout"}
-            className="bg-gray-100  p-1 m-1 border-green-400 border rounded px-2 cursor-pointer text-green-600 w-34 hover:bg-green-500 hover:text-white"
+          <button
+            onClick={() => navigateTo("/checkout")}
+            className="bg-green-300 border border-green-400 text-green-700 hover:bg-green-700 hover:text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline cursor:auto; text-sm mt-2"
           >
             Finalizar compra
-          </Link>
+          </button>
         </div>
       </div>
     );

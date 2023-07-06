@@ -9,12 +9,10 @@ import { ProtectedRoute } from './components/protectedRoutes';
 import Profile from "./components/Profile/Profile";
 
 
-
-
 function App() {
 
   return (
-    <main className="text-center">
+    <main>
       <AppProvider>
         <Routes>
           <Route

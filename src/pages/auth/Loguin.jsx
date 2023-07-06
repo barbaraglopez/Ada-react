@@ -45,8 +45,7 @@ export const Loguin = () => {
             htmlFor="email"
             className="block text-gray-700 text-sm font-fold mb-2"
           >
-            {" "}
-            Email{" "}
+            Email:
           </label>
           <input
             type="email"
