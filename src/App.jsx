@@ -9,18 +9,15 @@ import { ProtectedRoute } from './components/protectedRoutes';
 import Profile from "./components/Profile/Profile";
 
 
+
+
 function App() {
 
   return (
-    <main>
+    <main className="text-center">
       <AppProvider>
         <Routes>
-          <Route
-            path="/home"
-            element={
-                <Home />}
-            action={Sing}
-          />
+          <Route path="/home" element={<Home />} action={Sing} />
           <Route path="/loguin" element={<Loguin />} action={Sing} />
           <Route
             path="/profile"

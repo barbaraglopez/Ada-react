@@ -32,22 +32,22 @@ export const CartElements = () => {
                 {product.descripcion}
               </p>
               <p className="precio block text-gray-700 text-sm font-fold mb-2">
-                Precio : $ {product.precio}
+                Price : $ {product.precio}
               </p>
               <p className="block text-gray-700 text-sm font-fold mb-2">
-                Cantidad : {product.cantidad}
+                Amount : {product.cantidad}
               </p>
               <p className="block text-gray-700 text-sm font-fold mb-2">
-                Total a pagar ${product.precio * product.cantidad}
+                Total to pay ${product.precio * product.cantidad}
               </p>
             </div>
           ))}
           {!cart.length && <p>No hay pedido</p>}
           <button
             onClick={() => navigateTo("/home")}
-            className="rounded p-2 text-sm text-white bg-violet-500 hover:bg-violet-700 font-bold"
+            className="rounded p-2 text-sm text-white bg-gray-700 hover:bg-violet-700 font-bold mt-3"
           >
-            Vuelva al inicio
+            Back home
           </button>
         </div>
         <div className="flex flex-col items-center p-6">
@@ -55,13 +55,13 @@ export const CartElements = () => {
             className="bg-red-300 border border-red-400 text-red-700 hover:bg-red-700 hover:text-white font-bold py-2 rounded focus:outline-none focus:shadow-outline cursor:auto; text-sm mt-2 mx-2 px-7"
             onClick={() => deleteProduct(product)}
           >
-            Vaciar carrito
+            Empty cart
           </button>
           <button
             onClick={() => navigateTo("/checkout")}
-            className="bg-green-300 border border-green-400 text-green-700 hover:bg-green-700 hover:text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline cursor:auto; text-sm mt-2"
+            className="bg-green-300 border border-green-400 text-green-700 hover:bg-green-700 hover:text-white font-bold py-2 rounded focus:outline-none focus:shadow-outline cursor:auto; text-sm mt-2 px-8"
           >
-            Finalizar compra
+            Checkout
           </button>
         </div>
       </div>

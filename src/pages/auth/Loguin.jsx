@@ -72,13 +72,13 @@ export const Loguin = () => {
             className="shadow appearence-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
         </div>
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline cursor:auto; text-sm">
+        <button className="bg-gray-700 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline cursor:auto; text-sm">
           Loguin
         </button>
       </form>
       <Link
         to={"/"}
-        className="bg-violet-500 hover:bg-violet-400 p-2 m-2 rounded text-white focus:shadow-outline text-sm"
+        className="bg-violet-500 hover:bg-violet-400 text-white p-2 m-2 rounded focus:shadow-outline text-sm font-bold"
       >
         No tienes cuenta? Registrate!
       </Link>

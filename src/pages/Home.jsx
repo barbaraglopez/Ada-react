@@ -46,12 +46,11 @@ const buyProduct =(product)=>{
 if(loading) return <h1>loading</h1>
 
   return (
-    <div className="">
+    <div className="mb-2">
       <div className="flex">
         <Sidebar />
-        <div>
+        <div className="">
           <Navbar />
-          <h2>Home</h2>
           {error && <p>Error 404 not found</p>}
           {loading && <p>Loading</p>}
           {products.map((product) => (

@@ -40,7 +40,7 @@ const Profile =()=> {
             Do you have products in the cart?
             <button
               onClick={() => navigateTo("/cart")}
-              className="rounded p-2 text-sm text-white bg-violet-500 hover:bg-violet-700 font-bold mt-2"
+              className="rounded p-2 text-sm text-white bg-gray-700 hover:bg-violet-700 font-bold mt-2"
             >
               See my products
             </button>
@@ -48,9 +48,9 @@ const Profile =()=> {
           <div className="bg-white flex items-center flex-col text-center shadow-xl rounded pt-6 mb-3 mt-4 p-5 w-80 ">
             <button
               onClick={() => navigateTo("/home")}
-              className="rounded p-2 text-sm text-white bg-violet-500 hover:bg-violet-700 font-bold"
+              className="rounded p-2 text-sm text-white bg-gray-700 hover:bg-violet-700 font-bold px-6"
             >
-              Vuelva al inicio
+              Back home
             </button>
           </div>
         </div>

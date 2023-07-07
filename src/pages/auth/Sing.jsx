@@ -91,7 +91,7 @@ return (
       </div>
       <button
         type="submit"
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline cursor:auto; text-sm"
+        className="bg-gray-700 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline cursor:auto; text-sm"
       >
         Create account
       </button>
@@ -99,13 +99,13 @@ return (
     <div className="mb-4 w-full">
       <button
         onClick={LoguinwhitAccount}
-        className="bg-violet-200 hover:bg-violet-400 text-black shadow-mf rounded border-2 border-gray-300 py-2 px-4 w-full m-1"
+        className="bg-violet-500 hover:bg-violet-400 text-white  shadow-mf rounded border-2 border-gray-300 py-2 px-4 w-full m-1 font-bold"
       >
         Do you already have a account? Click here and login
       </button>
       <div
         onClick={handleGoogleSingIn}
-        className="bg-violet-200 hover:bg-violet-400 text-black shadow-mf rounded border-2 border-gray-300 py-2 px-4 w-full m-1 flex text-center justify-center"
+        className="bg-violet-500 hover:bg-violet-400 text-white  shadow-mf rounded border-2 border-gray-300 py-2 px-4 w-full m-1 flex text-center justify-center font-bold"
       >
         Loguin with google
         <FaGoogle className="text-center m-1 text-sky-800" />

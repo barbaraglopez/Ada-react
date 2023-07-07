@@ -65,7 +65,7 @@ const darkmode=()=>{
 
     return (
       <div
-        className={`bg-neutral-950 text-white "flex h-screen p-5 pt-8 h-screen ${
+        className={`bg-neutral-950 text-white "flex p-5 pt-8 h-screen ${
           open ? "w-72" : "w-20"
         } relative duration-300`}
       >
@@ -77,7 +77,7 @@ const darkmode=()=>{
         />
         <div className="inline-flex">
           <BsFillHeartFill
-            className={` text-violet-600 text-2xl rounded cursor-pointer block float-left mr-2 duration-500 ${
+            className={` text-violet-800 text-2xl rounded cursor-pointer block float-left mr-2 duration-500 ${
               open && "rotate-[360deg]"
             }`}
           />
@@ -112,7 +112,7 @@ const darkmode=()=>{
             <>
               <li
                 key={index}
-                className={`text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-violet-400 hover:text-black`}
+                className={`text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-gray-700 `}
               >
                 <span
                   className="text-2xl block"
@@ -142,8 +142,13 @@ const darkmode=()=>{
                   {menu.submenuItems.map((submenuItems, index) => (
                     <li
                       key={index}
-                      onClick={() => handleEventsSidebar(submenuItems.url, submenuItems.evento)}
-                      className={`text-gray-300 text-sm hover:bg-violet-400 hover:text-black flex items-center gap-x-4 cursor-pointer p-2 px-5`}
+                      onClick={() =>
+                        handleEventsSidebar(
+                          submenuItems.url,
+                          submenuItems.evento
+                        )
+                      }
+                      className={`text-gray-300 text-sm hover:bg-gray-700 flex items-center gap-x-4 cursor-pointer p-2 px-5`}
                     >
                       {submenuItems.title}
                     </li>
