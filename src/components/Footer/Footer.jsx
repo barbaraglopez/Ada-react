@@ -1,4 +1,5 @@
 import "./Footer.css";
+import { FaLinkedin, FaGithub } from "react-icons/fa6";;
 
 const Footer = () => {
 
@@ -14,24 +15,21 @@ const Footer = () => {
           </span>
           <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
             <li>
-              <a href="#" class="mr-4 hover:underline md:mr-6 ">
+              <a
+                href="https://www.linkedin.com/in/barbara-lopez-it"
+                class="mr-4 hover:underline md:mr-6 flex items-center"
+              >
                 Linkedin
+                <FaLinkedin className="mx-1 text-violet-700 text-xl" />
               </a>
             </li>
             <li>
               <a
                 href="https://github.com/barbaraglopez"
-                class="mr-4 hover:underline md:mr-6"
+                class="mr-4 hover:underline md:mr-6 flex items-center"
               >
                 Github
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://www.linkedin.com/in/barbara-lopez-it/"
-                class="mr-4 hover:underline md:mr-6"
-              >
-                Contact
+                <FaGithub className="mx-1 text-violet-700 text-xl" />
               </a>
             </li>
           </ul>

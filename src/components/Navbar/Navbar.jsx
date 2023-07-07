@@ -1,5 +1,5 @@
 import { useState} from "react";
-import { Link} from "react-router-dom";
+import {FaPhoneVolume} from "react-icons/fa6";
 
 //import TotalItems from "../CartContent/TotalItems";
 
@@ -11,23 +11,24 @@ const Navbar = () => {
   return (
     <div className="">
       <nav class="bg-white border-gray-200 dark:bg-black w-screen">
-        <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
-          <a href="https://flowbite.com" class="flex items-center">
+        <div class="flex flex-wrap justify-between items-center mx-9 max-w-screen-xl p-4">
+          <a href="#" class="flex items-center">
             <img
-              src="https://flowbite.com/docs/images/logo.svg"
-              class="h-8 mr-3"
-              alt="Flowbite Logo"
+              src="../../../img/LogoSample_ByTailorBrands.jpg"
+              class="h-14 rounded-xl mr-3"
+              alt="Logo"
             />
             <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-              Flowbite
+              Funny SetUp
             </span>
           </a>
           <div class="flex items-center">
             <a
-              href="tel:5541251234"
-              class="mr-6 text-sm  text-gray-500 dark:text-white hover:underline"
+              href="tel:543624712603"
+              class="mr-2 text-sm  text-gray-500 dark:text-white hover:underline flex items-center"
             >
-              (555) 412-1234
+              (54) 3624712603
+              <FaPhoneVolume className="mx-1 text-violet-700" />
             </a>
             <a
               href="#"
