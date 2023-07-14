@@ -46,23 +46,23 @@ const buyProduct =(product)=>{
 if(loading) return <h1>loading</h1>
 
   return (
-    <div className="mb-2">
+    <div className="">
       <div className="flex">
         <Sidebar />
-        <div>
+        <div className="">
           <Navbar />
           {error && <p>Error 404 not found</p>}
           {loading && <p>Loading</p>}
-          <div className="flex">
+          <div className="grid grid-cols-4 grid-rows-1 mb-40 max-md:grid-cols-2 max-lg:grid-cols-3 max-sm:flex max-sm:flex-col max-sm:items-center">
             {products.map((product) => (
               <div
                 key={product.id}
-                className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 m-2 flex flex-col items-center"
+                className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 m-2 flex flex-col items-center max-sm:w-full                        "
               >
                 <a href="#" className="">
-                  <img src={product.img} className="rounded-t-lg" />
+                  <img src={product.img} className="rounded-t-lg h-72 mt-4" />
                 </a>
-                <div className="p-5">
+                <div className="p-2">
                   <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                     {product.name}
                   </h5>

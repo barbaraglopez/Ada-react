@@ -24,6 +24,25 @@ export const useAuth = () => {
 export const AppProvider = ({ children }) => {
     const [user, setUser] = useState(null);
 
+    //funcion para medir pantalla
+    const useScreenSize = () => {
+      const [width, setWidth] = useState(window.innerWidth);
+
+      useEffect(() => {
+        window.addEventListener("resize", handleResize);
+
+        return () => {
+          window.removeEventListener("resize", handleResize);
+        };
+      }, []);
+
+      const handleResize = () => {
+        setWidth(window.innerWidth);
+      };
+
+      return { width };
+    };
+
     useEffect(() => {
         const unsuscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser)
@@ -92,21 +111,22 @@ const loguinWithGoogle =()=>{
     const [total, setTotal] = useState();
 
     return (
-        <AppContext.Provider
-            value={{
-                logOut,
-                loguinUser,
-                registerUser,
-                user,
-                data,
-                cart,
-                setCart,
-                total,
-                setTotal,
-                loguinWithGoogle,
-            }}
-        >
-            {children}
-        </AppContext.Provider>
+      <AppContext.Provider
+        value={{
+          logOut,
+          loguinUser,
+          registerUser,
+          user,
+          data,
+          cart,
+          setCart,
+          total,
+          setTotal,
+          loguinWithGoogle,
+          useScreenSize,
+        }}
+      >
+        {children}
+      </AppContext.Provider>
     );
 };

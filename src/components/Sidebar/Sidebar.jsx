@@ -78,7 +78,7 @@ const darkmode=()=>{
 
     return (
       <div
-        className={`bg-neutral-950 text-white "flex p-5 pt-8 h-screen ${
+        className={`bg-neutral-950 text-white "flex p-5 pt-8 max-md:hidden ${
           open ? "w-72" : "w-20"
         } relative duration-300`}
       >
