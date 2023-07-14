@@ -24,18 +24,31 @@ function Sidebar() {
     const [ logout, setlogout] = useState(false)
 
     const Menus = [
-      { title: "Profile", icon: <FaUser />, url: "/profile" },
-      { title: "Cart", icon: <ImCart />, url: "/cart" },
       {
-        title: "Products",
-        submenu: true,
-        submenuItems: [
-          { title: "All our products", url: "/home" },
-          { title: "Everywone favorites", url: "/profile" },
-        ],
+        title: "Profile",
+        icon: <FaUser className="text-blue-300" />,
+        url: "/profile",
       },
-      { title: "Logout", icon: <BsPersonXFill />, evento: true },
-      { title: "Darkmode", icon: <CgDarkMode />, evento: false },
+      {
+        title: "Cart",
+        icon: <ImCart className="text-blue-300" />,
+        url: "/cart",
+      },
+      {
+        title: "Monsters",
+        submenu: true,
+        submenuItems: [{ title: "All our products", url: "/home" }],
+      },
+      {
+        title: "Logout",
+        icon: <BsPersonXFill className="text-blue-300" />,
+        evento: true,
+      },
+      {
+        title: "Darkmode",
+        icon: <CgDarkMode className="text-blue-300" />,
+        evento: false,
+      },
     ];
 
     const handleEventsSidebar = (parametro1, parametro2) => {
@@ -77,7 +90,7 @@ const darkmode=()=>{
         />
         <div className="inline-flex">
           <BsFillHeartFill
-            className={` text-violet-800 text-2xl rounded cursor-pointer block float-left mr-2 duration-500 ${
+            className={` text-blue-300 text-2xl rounded cursor-pointer block float-left mr-2 duration-500 ${
               open && "rotate-[360deg]"
             }`}
           />
@@ -118,7 +131,11 @@ const darkmode=()=>{
                   className="text-2xl block"
                   onClick={() => handleEventsSidebar(menu.url, menu.evento)}
                 >
-                  {menu.icon ? menu.icon : <BsFillMouse2Fill />}
+                  {menu.icon ? (
+                    menu.icon
+                  ) : (
+                    <BsFillMouse2Fill className="text-blue-300"/>
+                  )}
                 </span>
                 <span
                   className={`text-base font-medium flex-1 ${

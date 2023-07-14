@@ -20,7 +20,7 @@ const Footer = () => {
                 class="mr-4 hover:underline md:mr-6 flex items-center"
               >
                 Linkedin
-                <FaLinkedin className="mx-1 text-violet-700 text-xl" />
+                <FaLinkedin className="mx-1 text-blue-300 text-xl" />
               </a>
             </li>
             <li>
@@ -29,7 +29,7 @@ const Footer = () => {
                 class="mr-4 hover:underline md:mr-6 flex items-center"
               >
                 Github
-                <FaGithub className="mx-1 text-violet-700 text-xl" />
+                <FaGithub className="mx-1 text-blue-300 text-xl" />
               </a>
             </li>
           </ul>
